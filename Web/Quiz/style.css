@@ -12,8 +12,21 @@ h1 ,h2, h3 {
     font-family: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", sans-serif;
 }
 
+h2 {
+    border-bottom: 1px solid #121314;
+}
+
 ul li, ol li {
     padding: 1em 0px;
+}
+
+ol.choices {
+    list-style: upper-alpha;
+}
+
+#answer {
+    font-size: 20px;
+    color: red;
 }
 
 #main {
