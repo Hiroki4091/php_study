@@ -11,3 +11,15 @@ body {
 h1 ,h2, h3 {
     font-family: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", sans-serif;
 }
+
+ul li, ol li {
+    padding: 1em 0px;
+}
+
+#main {
+    padding: 0 1.5em;
+}
+
+div.section {
+    margin-top: 2em;
+}
