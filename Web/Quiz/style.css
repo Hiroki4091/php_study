@@ -17,11 +17,24 @@ h2 {
 }
 
 ul li, ol li {
-    padding: 1em 0px;
+    padding: 1em;
+    list-style-position: inside;
+
+}
+
+#section-correct-answer {
+    display: none;
 }
 
 ol.choices {
     list-style: upper-alpha;
+}
+
+ol.choices li:hover {
+    border: 0.1em solid #007fff;
+    background-color: #cef787;
+    padding: 0.9em;
+    cursor: pointer;
 }
 
 #answer {
