@@ -19,8 +19,8 @@ function checkClickedChoice(event) {
     // 選択した答え(A, B, C, D)
     const selectedChoice = clickedAnwerElement.dataset.answer;
 
-
-    const questionId = 'question1';
+    // clickedAnswerElementの親の要素のなかにセレクターol.choicesと一致するものがあったらclosestで取得できる
+    const questionId = clickedAnwerElement.closest('ol.choices').dataset.id;
     // 正しい答え(A, B, C, D)
     answer = answers[questionId];
 
