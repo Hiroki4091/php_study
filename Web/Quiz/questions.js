@@ -2,6 +2,14 @@ const choicesList = document.querySelectorAll('ol.choices li');
 
 choicesList.forEach(li => li.addEventListener('click', checkClickedChoice));
 
+// 正しい答え
+const answers = {
+    question1: 'A',
+    question2: 'B',
+    question3: 'C',
+    question4: 'D',
+};
+
 function checkClickedChoice(event) {
     // クリックされた答えの要素(liタグ)
     const clickedAnwerElement = event.currentTarget;
@@ -11,8 +19,10 @@ function checkClickedChoice(event) {
     // 選択した答え(A, B, C, D)
     const selectedChoice = clickedAnwerElement.dataset.answer;
 
+
+    const questionId = 'question1';
     // 正しい答え(A, B, C, D)
-    answer = 'A';
+    answer = answers[questionId];
 
     // メッセージを入れる変数を用意
     let message;
