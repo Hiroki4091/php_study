@@ -20,8 +20,10 @@ if (!$data) {
 $formattedData = generateFormattedData($data);
 
 $assignData = [
-    
+    'id' => $formattedData['id'],
+    'question' => $formattedData['question'],
+    'answers' => $formattedData['answers'],
 ];
 
 // ファイルを読み込む
-loadTemplate('index', $assignData);
+loadTemplate('question', $assignData);
