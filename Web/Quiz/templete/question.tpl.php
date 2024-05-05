@@ -31,6 +31,12 @@
             </p>
         </div>
 
+        <form method="POST" action="answer.php">
+            <p>ID: <br><input name="id" type="text" value="1"></p>
+            <p>選んだ答え: <br><input name="selectedAnswer" type="text" value="C"></p>
+            <p><input type="submit" value="送信"></p>
+        </form>
+
         <div class="section">
             <a href="index.html">戻る</a>
         </div>

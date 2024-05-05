@@ -24,6 +24,22 @@ function checkClickedChoice(event) {
     // 正しい答え(A, B, C, D)
     const answer = answers[questionId];
 
+    // フォームデータの入れ物を作る
+    const formData = new FormData();
+
+    // 送信したい値を追加
+    formData.append('id', questionId);
+    formData.append('selectedChoice', selectedChoice);
+
+    // xhr = XMLHttpRequestの頭文字
+    const xhr = new XMLHttpRequest();
+
+    // HTTPメソッドをPOSTに指定、送信するURLを指定
+    xhr.open('POST', 'answer.php');
+
+    // フォームデータをサーバーに送信
+    xhr.send(formData);
+
     // 答えが正しいか判定
     const result = selectedChoice === answer;
 
