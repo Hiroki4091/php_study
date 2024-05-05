@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../lib/functions.php';
+
 $question = 'あああああ';
 $id = '1';
 
@@ -15,4 +17,4 @@ $correctAnswerValue = $answers[$correctAnswer];
 $explanation = '解説解説';
 
 // ファイルを読み込む
-include __DIR__ .'/../templete/question..tpl.php';
+include __DIR__ .'/../templete/question.tpl.php';
