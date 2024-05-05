@@ -12,10 +12,15 @@ if (!$data) {
     // HTTPレスポンスのヘッダを404にする
     header('HTTP/1.1 404 Not Found');
 
-    // レスポンスの種類を指定する
-    header('Content-Type: text/html; charset=UTF-8');
+    // レスポンスの種類を指定する(jsonで返す)
+    header('Content-Type: application/json; charset=UTF-8');
 
-    include __DIR__ .'/../templete/404.tpl.php';
+    
+    $response = [
+        'message' => '指定したidは見つからなかった',
+    ];
+
+echo json_encode($response);
     exit(0);
 }
 
@@ -34,4 +39,6 @@ $response = [
     'explanation' => $explanation,
 ];
 
+// レスポンスの種類を指定する
+header('Content-Type: application/json; charset=UTF-8');
 echo json_encode($response);
