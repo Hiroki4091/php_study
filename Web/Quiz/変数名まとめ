@@ -9,7 +9,7 @@ question.php
 questions.js
 ・answers 各問題の正しい答え
 ・choicesList ol.choicesの中のliタグ
-function checkClickedChoice内の変数
+function checkClickedChoice
     ・clickedAnwerElement クリックされたliタグの要素
     ・selectedChoice 選択した答え（liタグの要素）
     ・questionId ol.choicesの親要素を取得
@@ -24,3 +24,7 @@ question1, 2, 3, 4.html
 ・section
 ・class: choices
 ・id: data-id, section-correct-answer, answer
+
+function fetchById
+    ・handler
+    ・question

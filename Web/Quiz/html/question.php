@@ -2,8 +2,10 @@
 
 require __DIR__ . '/../lib/functions.php';
 
-$question = 'あああああ';
 $id = '1';
+$data = fetchById($id);
+
+$question = 'あああああ';
 
 $answers = [
     'A' => 'あああ',
