@@ -17,18 +17,17 @@
             </p>
             <h3>選択肢</h3>
             <ol class="choices" data-id="<?php echo $id; ?>">
-                <li data-answer="A">あああ</li>
-                <li data-answer="B">いいい</li>
-                <li data-answer="C">ううう</li>
-                <li data-answer="D">えええ</li>
+                <?php foreach ($answers as $key => $value): ?>
+                    <li data-answer="<?php echo $key; ?>"><?php echo $value; ?></li>
+                <?php endforeach; ?>
             </ol>
         </div>
 
         <div id="section-correct-answer" class="section">
             <h2>答え</h2>
             <p>
-                <span id="answer">あああ</span><br>
-                解説解説
+                <span id="answer"><?php echo $correctAnswer; ?>. <?php echo $correctAnswerValue; ?></span><br>
+                <?php echo $explanation; ?>
             </p>
         </div>
 
