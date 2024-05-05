@@ -1,5 +1,22 @@
 <?php
 
+function loadTemplate($filename, array $assignData = []) {
+    extract($assignData);
+    include __DIR__ . '/../templete/'.$filename.'.tpl.php';
+}
+
+function error404() {
+    // HTTPレスポンスのヘッダを404にする
+    header('HTTP/1.1 404 Not Found');
+
+    // レスポンスの種類を指定する(jsonで返す)
+    header('Content-Type: application/json; charset=UTF-8');
+    
+    loadTemplate('404');
+
+    exit(0);    
+}
+
 function fetchById($id) {
     // ファイルを開く
     $handler = fopen(__DIR__.'/data.csv', 'r');

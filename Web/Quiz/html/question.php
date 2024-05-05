@@ -19,12 +19,11 @@ if (!$data) {
 
 $formattedData = generateFormattedData($data);
 
-$question = $formattedData['question'];
+$assignData = [
+    'id' => $formattedData['id'],
+    'question' => $formattedData['question'],
+    'answers' => $formattedData['answers'],
+];
 
-$answers = $formattedData['answers'];
-
-$correctAnswer = $formattedData['correctAnswer'];
-$correctAnswerValue = $answers[$correctAnswer];
-$explanation = $formattedData['explanation'];
 // ファイルを読み込む
-include __DIR__ .'/../templete/question.tpl.php';
+loadTemplate('question', $assignData);
