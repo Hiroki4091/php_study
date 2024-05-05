@@ -3,7 +3,7 @@
 require __DIR__ . '/../lib/functions.php';
 
 $id = $_POST['id'] ?? '';
-$selectedAnswer = $_POST['selectedAnswer'] ?? '';
+$selectedChoice = $_POST['selectedChoice'] ?? '';
 
 $data = fetchById($id)[0];
 
@@ -25,7 +25,7 @@ $correctAnswer = $formattedData['correctAnswer'];
 $correctAnswerValue = $formattedData['answers'][$correctAnswer];
 $explanation = $formattedData['explanation'];
 
-$result = $selectedAnswer === $correctAnswer;
+$result = $selectedChoice === $correctAnswer;
 
 $response = [
     'result' => $result,

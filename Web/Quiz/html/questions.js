@@ -2,13 +2,6 @@ const choicesList = document.querySelectorAll('ol.choices li');
 
 choicesList.forEach(li => li.addEventListener('click', checkClickedChoice));
 
-// 正しい答え
-const answers = {
-    1: 'A',
-    2: 'B',
-    3: 'C',
-    4: 'D',
-};
 
 function checkClickedChoice(event) {
     // クリックされた答えの要素(liタグ)
@@ -21,8 +14,6 @@ function checkClickedChoice(event) {
 
     // clickedAnswerElementの親の要素のなかにセレクターol.choicesと一致するものがあったらclosestで取得できる
     const questionId = clickedAnwerElement.closest('ol.choices').dataset.id;
-    // 正しい答え(A, B, C, D)
-    const answer = answers[questionId];
 
     // フォームデータの入れ物を作る
     const formData = new FormData();
@@ -40,11 +31,24 @@ function checkClickedChoice(event) {
     // フォームデータをサーバーに送信
     xhr.send(formData);
 
-    // 答えが正しいか判定
-    const result = selectedChoice === answer;
+    // loadendはリクエストが完了したときにイベントが発生する
+    xhr.addEventListener('loadend', function(event) {
+        /** @type {XMLHttpRequest} */
+        const xhr = event.currentTarget;
 
-    // 画面表示
-    displayResult(result);
+        // リクエストが成功したかステータスコードで確認
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.response);
+            // 答えが正しいか判定
+            const result = response.result;
+
+            // 画面表示
+            displayResult(result);
+        } else {
+            // エラー
+            alert('Error: 回答データの取得に失敗しました。')
+        }
+    });
 }
 
 function displayResult(result) {
