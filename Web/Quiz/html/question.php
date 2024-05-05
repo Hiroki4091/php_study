@@ -5,18 +5,14 @@ require __DIR__ . '/../lib/functions.php';
 $id = '3';
 $data = fetchById($id)[0];
 
-$question = nl2br(htmlspecialchars($data[1]));
+$formattedData = generateFormattedData($data);
 
-$answers = [
-    'A' => htmlspecialchars($data[2]),
-    'B' => htmlspecialchars($data[3]),
-    'C' => htmlspecialchars($data[4]),
-    'D' => htmlspecialchars($data[5]),
-];
+$question = $formattedData['question'];
 
-$correctAnswer = htmlspecialchars(strtoupper($data[6]));
+$answers = $formattedData['answers'];
+
+$correctAnswer = $formattedData['correctAnswer'];
 $correctAnswerValue = $answers[$correctAnswer];
-$explanation = nl2br(htmlspecialchars($data[7]));
-
+$explanation = $formattedData['explanation'];
 // ファイルを読み込む
 include __DIR__ .'/../templete/question.tpl.php';

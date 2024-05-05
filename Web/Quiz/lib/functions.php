@@ -25,9 +25,9 @@ function fetchById($id) {
 /**
  * クイズの問題データの行か判定
  *
- * @param array $row csvファイルの1行分のデータ
+ * $row csvファイルの1行分のデータ
  *
- * @return bool クイズのデータの場合はtrue/クイズのデータでなければfalse
+ * クイズのデータの場合はtrue/クイズのデータでなければfalse
  */
 function isDataRow(array $row)
 {
@@ -59,4 +59,52 @@ function isDataRow(array $row)
     // すべてチェックが問題なければtrue
     return true;
 
+}
+
+/**
+ * 取得できたクイズのデータ1行を利用しやすいように連想配列に変換
+ * 値をHTMLに組み込めるようにエスケープも行う
+ *
+ * @param array $data クイズ情報(1問分)
+ *
+ * @return array 整形したクイズの情報
+ */
+function generateFormattedData($data)
+{
+    // 構造化した配列を作成する
+    $formattedData = [
+        'id' => escape($data[0]),
+        'question' => escape($data[1], true),
+        'answers' => [
+            'A' => escape($data[2]),
+            'B' => escape($data[3]),
+            'C' => escape($data[4]),
+            'D' => escape($data[5]),
+        ],
+        'correctAnswer' => escape(strtoupper($data[6])),
+        'explanation' => escape($data[7], true),
+    ];
+    return $formattedData;
+}
+
+/**
+ * HTMLに組み込むために必要なエスケープ処理を行う
+ *
+ * $data エスケープしたい情報
+ * $nl2br 改行を<br>に変換する場合はtrue
+ *
+ * エスケープ済の文字列
+ */
+function escape($data, $nl2br = false)
+{
+    // HTMLに埋め込んでも大丈夫な文字に変換する
+    $convertedData = htmlspecialchars($data, ENT_HTML5);
+
+    // 改行コードを<br>タグに変換するか判定
+    if ($nl2br) {
+        /// 改行コードを<br>タグに変換したものをを返却
+        return nl2br($convertedData);
+    }
+
+    return $convertedData;
 }
