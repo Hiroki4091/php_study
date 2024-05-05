@@ -41,9 +41,12 @@ function checkClickedChoice(event) {
             const response = JSON.parse(xhr.response);
             // 答えが正しいか判定
             const result = response.result;
+            const correctAnswer = response.correctAnswer;
+            const correctAnswerValue = response.correctAnswerValue;
+            const explanation = response.explanation;
 
             // 画面表示
-            displayResult(result);
+            displayResult(result, correctAnswer, correctAnswerValue, explanation);
         } else {
             // エラー
             alert('Error: 回答データの取得に失敗しました。')
@@ -51,7 +54,7 @@ function checkClickedChoice(event) {
     });
 }
 
-function displayResult(result) {
+function displayResult(result, correctAnswer, correctAnswerValue, explanation) {
     // メッセージを入れる変数を用意
     let message;
 
@@ -70,6 +73,10 @@ function displayResult(result) {
     }
 
     alert(message);
+
+    // 正解の内容をHTMLに取り込む
+    document.querySelector('span#answer').innerHTML = correctAnswer + '. ' + correctAnswerValue;
+    document.querySelector('span#explanation').innerHTML = explanation;
 
     // 間違った時だけ色が変わる
     document.querySelector('#answer').style.color = answerColorCode;
