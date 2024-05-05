@@ -5,7 +5,7 @@ require __DIR__ . '/../lib/functions.php';
 $id = '3';
 $data = fetchById($id)[0];
 
-$question = $data[1];
+$question = nl2br($data[1]);
 
 $answers = [
     'A' => $data[2],
@@ -16,7 +16,7 @@ $answers = [
 
 $correctAnswer = strtoupper($data[6]);
 $correctAnswerValue = $answers[$correctAnswer];
-$explanation = $data[7];
+$explanation = nl2br($data[7]);
 
 // ファイルを読み込む
 include __DIR__ .'/../templete/question.tpl.php';
