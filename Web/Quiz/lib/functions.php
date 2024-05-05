@@ -7,7 +7,7 @@ function fetchById($id) {
     // データを取得
     $question = [];
     while ($row = fgetcsv($handler)) {
-        if ($row[0] == $id) {
+        if ($row[0] === $id) {
             $question = $row;
             break;
         }
@@ -15,6 +15,7 @@ function fetchById($id) {
     
     // ファイルを閉じる
     fclose($handler);
+
     // データを返す
     return [$question];
 }

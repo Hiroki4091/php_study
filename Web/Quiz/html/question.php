@@ -2,21 +2,21 @@
 
 require __DIR__ . '/../lib/functions.php';
 
-$id = '1';
-$data = fetchById($id);
+$id = '3';
+$data = fetchById($id)[0];
 
-$question = 'あああああ';
+$question = $data[1];
 
 $answers = [
-    'A' => 'あああ',
-    'B' => 'いいい',
-    'C' => 'ううう',
-    'D' => 'えええ',
+    'A' => $data[2],
+    'B' => $data[3],
+    'C' => $data[4],
+    'D' => $data[5],
 ];
 
-$correctAnswer = 'A';
+$correctAnswer = strtoupper($data[6]);
 $correctAnswerValue = $answers[$correctAnswer];
-$explanation = '解説解説';
+$explanation = $data[7];
 
 // ファイルを読み込む
 include __DIR__ .'/../templete/question.tpl.php';
