@@ -22,8 +22,16 @@ function checkClickedChoice(event) {
     // clickedAnswerElementの親の要素のなかにセレクターol.choicesと一致するものがあったらclosestで取得できる
     const questionId = clickedAnwerElement.closest('ol.choices').dataset.id;
     // 正しい答え(A, B, C, D)
-    answer = answers[questionId];
+    const answer = answers[questionId];
 
+    // 答えが正しいか判定
+    const result = selectedChoice === answer;
+
+    // 画面表示
+    displayResult(result);
+}
+
+function displayResult(result) {
     // メッセージを入れる変数を用意
     let message;
 
@@ -31,7 +39,7 @@ function checkClickedChoice(event) {
     let answerColorCode;
 
     // 答えを判定
-    if (selectedChoice == answer) {
+    if (result) {
         // 答えが正しかった
         message = '正解です！おめでとう';
         answerColorCode = '';
@@ -49,4 +57,3 @@ function checkClickedChoice(event) {
     // 答え全体を表示
     document.querySelector('#section-correct-answer').style.display = 'block';
 }
-
