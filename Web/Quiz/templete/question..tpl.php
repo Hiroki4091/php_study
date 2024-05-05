@@ -12,7 +12,9 @@
         <div class="section">
             <h1>Quiz</h1>
             <h2>問題1</h2>
-            <p>ああああ</p>
+            <p>
+                <?php echo $question; ?>
+            </p>
             <h3>選択肢</h3>
             <ol class="choices" data-id="question1">
                 <li data-answer="A">あああ</li>
