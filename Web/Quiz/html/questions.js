@@ -4,10 +4,10 @@ choicesList.forEach(li => li.addEventListener('click', checkClickedChoice));
 
 // 正しい答え
 const answers = {
-    question1: 'A',
-    question2: 'B',
-    question3: 'C',
-    question4: 'D',
+    1: 'A',
+    2: 'B',
+    3: 'C',
+    4: 'D',
 };
 
 function checkClickedChoice(event) {
